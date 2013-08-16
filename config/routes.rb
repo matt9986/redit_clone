@@ -6,7 +6,10 @@ RedditClone::Application.routes.draw do
     resources :links, only: [:new, :create]
   end
   resources :links, only: [:destroy, :show, :edit, :update] do
-    resources :votes, only: [:create]
+      member do
+        post 'upvote'
+        post 'downvote'
+    end
   end
   resources :comments, only: [:destroy, :create]
   # The priority is based upon order of creation:

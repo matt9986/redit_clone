@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_filter :check_session, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_session, except: [:show]
   def new
     @link = Link.new(sub_id: params[:sub_id])
     render :new
@@ -46,5 +46,26 @@ class LinksController < ApplicationController
       @link.update_attributes(link)
     end
     redirect_to link_url(@link)
+  end
+
+  def upvote
+    create_vote(current_user.id, params[:id], 1)
+    redirect_to link_url(params[:id])
+  end
+
+  def downvote
+    create_vote(current_user.id, params[:id], -1)
+    redirect_to link_url(params[:id])
+  end
+
+
+  def create_vote(user_id, link_id, value)
+  if vote = Vote.find_by_user_id_and_link_id(user_id, link_id)
+    vote.update_attributes(value: value)
+  else
+    vote = Vote.new(user_id: user_id, link_id: link_id, value: value)                
+    vote.save
+  end
+  vote
   end
 end

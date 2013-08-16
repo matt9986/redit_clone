@@ -8,5 +8,5 @@ class Sub < ActiveRecord::Base
     foreign_key: :mod_id,
     primary_key: :id
 
-  has_many :links
+  has_many :links, dependent: :destroy
 end

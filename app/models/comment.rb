@@ -10,5 +10,6 @@ class Comment < ActiveRecord::Base
   has_many :child_comments,
     class_name: "Comment",
     foreign_key: :parent_comment_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 end

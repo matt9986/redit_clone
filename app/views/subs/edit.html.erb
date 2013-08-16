@@ -13,8 +13,9 @@
   <% @links.each do |link| %>
     <input type=checkbox name="remove[links][]" value="<%= link.id %>">
     <label for= "remove_links_<%= link.id %>"><%= link.title %> by <%= link.author.username %></label>
+    <br>
   <% end %>
-  <input type="submit" value="Start!">
+  <input type="submit" value="Modded!">
 </form>
 <br>
 <br>

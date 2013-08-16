@@ -8,9 +8,9 @@ class Link < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   belongs_to :sub
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   def score
     self.votes.sum(:value)

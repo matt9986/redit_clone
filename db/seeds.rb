@@ -51,7 +51,7 @@ def generate_comments
 	user_ids = User.pluck(:id)
 	5.times do
 		link = links.sample
-		parent_comment_id = ([nil, nil] + [link.comment_ids]).sample
+		parent_comment_id = ([nil] + link.comment_ids).sample
 		body = "That #{link.title.split(" ")[1]} was #{DESCRIPTORS.sample}"
 		user_id = user_ids.sample
 		link_id = link.id
@@ -77,5 +77,5 @@ generate_subs
 	user_id= User.pluck(:id).sample
 	rand_links(user_id)
 end
-7.times{ generate_comments }
+15.times{ generate_comments }
 generate_votes

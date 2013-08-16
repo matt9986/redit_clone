@@ -1,5 +1,5 @@
 <h2><%= @sub.name %></h2>
-<% if current_user.id == @sub.mod_id %>
+<% if logged_in? && current_user.id == @sub.mod_id %>
 <a href="<%= edit_sub_url(@sub) %>">Moderate the Sub</a>
 <% end %>
 
@@ -11,6 +11,6 @@
 <br>
 <a href='<%= new_sub_link_url(@sub) %>'>Add something!</a>
 
-<% if current_user.id == @sub.mod_id %>
+<% if logged_in? && current_user.id == @sub.mod_id %>
 <a href="<%= edit_sub_url(@sub) %>">Moderate the Sub</a>
 <% end %>

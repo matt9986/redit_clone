@@ -33,8 +33,7 @@ def rand_links(user_id)#<--TODO figure out if user should be random
     url = "www.lmgtfy.com/?"+title.gsub(" ", "+")+"&l=1"
     desc = "This site is not liable for where this link may take you"
     sub_id = sub.id
-    Link.create(title: title, url: url, desc: desc,
-                user_id: user_id, sub_id: sub)
+    Link.create(title: title, url: url, desc: desc, user_id: user_id, sub_id: sub_id)
   end
 end
 
@@ -52,7 +51,7 @@ def generate_comments
 	user_ids = User.pluck(:id)
 	5.times do
 		link = links.sample
-		parent_comment_id = [nil, link.comments.sample.id].sample
+		parent_comment_id = ([nil, nil] + [link.comment_ids]).sample
 		body = "That #{link.title.split(" ")[1]} was #{DESCRIPTORS.sample}"
 		user_id = user_ids.sample
 		link_id = link.id
@@ -75,8 +74,8 @@ end
 3.times{ make_users }
 generate_subs
 7.times do
-	user= User.all.sample
-	rand_links(user)
+	user_id= User.pluck(:id).sample
+	rand_links(user_id)
 end
 7.times{ generate_comments }
 generate_votes

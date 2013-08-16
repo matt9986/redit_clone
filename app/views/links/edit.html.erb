@@ -1,0 +1,13 @@
+<h2>Edit this link!</h2>
+<form action="<%= link_url(@link) %>" method="post">
+  <input type= "hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type= "hidden"
+    name="_method"
+    value="put">
+  <%= new_link(@link, 0) %>
+  <input type="submit" value="Change!">
+</form>
+
+<%= button_to "Need to delete?", link_url(@link), method: :delete %>

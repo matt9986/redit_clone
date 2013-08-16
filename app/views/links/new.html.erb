@@ -1,0 +1,8 @@
+<h2>Add a link!</h2>
+<form action="<%= sub_links_url() %>" method="post">
+  <input type= "hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <%= new_link(@link, 0) %>
+  <input type="submit" value="Add!">
+</form>

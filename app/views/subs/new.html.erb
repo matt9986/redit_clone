@@ -1,0 +1,17 @@
+<h1>So You Want to Start a Sub?</h1>
+
+<form action="<%= subs_url %>" method="post">
+  <input type= "hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="sub_name">Name:</label>
+  <input type="text" name="sub[name]" id="sub_name" value="<%= @sub.name %>">
+
+  <h3>Add links?</h3>
+  <% @links.each_with_index do |link, i| %>
+    <%= new_link(link, i)  %>
+  <% end %>
+  <input type="submit" value="Start!">
+</form>
+

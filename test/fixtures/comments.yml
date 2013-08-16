@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  parent_comment_id: 1
+  link_id: 1
+  body: MyString
+  user_id.integer: MyString
+
+two:
+  parent_comment_id: 1
+  link_id: 1
+  body: MyString
+  user_id.integer: MyString

@@ -1,0 +1,19 @@
+<h2>You were missed</h2>
+<form action="<%= session_url %>" method="post">
+  <input type= "hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <label for="username">Username:</label>
+  <input type="text"
+    value="<%= @user.username %>"
+    name="username"
+    id="username">
+  <br>
+  <label for="password">Password:</label>
+  <input type="password"
+    name="password"
+    id="password">
+  <br>
+  <input type="submit" value="Sign in">
+</form>
+<a href="<%= new_user_url %>">New here?</a>

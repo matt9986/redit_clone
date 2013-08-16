@@ -1,0 +1,21 @@
+<h2>Time to Moderate</h2>
+<form action="<%= sub_url(@sub) %>" method="post">
+  <input type= "hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type= "hidden"
+    name="_method"
+    value="put">
+  <label for="sub_name">Name:</label>
+  <input type="text" name="sub[name]" id="sub_name" value="<%= @sub.name %>">
+
+  <h3>Remove links?</h3>
+  <% @links.each do |link| %>
+    <input type=checkbox name="remove[links][]" value="<%= link.id %>">
+    <label for= "remove_links_<%= link.id %>"><%= link.title %> by <%= link.author.username %></label>
+  <% end %>
+  <input type="submit" value="Start!">
+</form>
+<br>
+<br>
+<%= button_to "Self-Destruct Button" %>

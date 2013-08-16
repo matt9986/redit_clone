@@ -1,0 +1,12 @@
+<li>
+  <%= comment.body %> -- <%= comment.user.username %>
+  <%= button_to "Delete comment", comment_url(comment), method: :delete %>
+  <ul>
+  <% @comments_by_parent[comment.id].each do |baby_comment| %>
+    <%= render "comment_tree",
+    comment: baby_comment,
+    comments_by_parent: @comments_by_parent %>
+  <% end %>
+  <li><%= make_comment(comment.id, comment.link_id) %></li>
+  </ul>
+</li>

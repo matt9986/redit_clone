@@ -9,11 +9,16 @@
 <body>
   <%= flash[:message]%>
 <%= yield %>
+  <br>
+  <br>
   <% if logged_in? %>
-  <br>
-  <a href='<%= subs_url %>'>Go back to the start</a>
-  <br>
-  <%= button_to "Sign Out!", session_url, method: :delete%>
+    <a href='<%= subs_url %>'>Go back to the start</a>
+    <br>
+    <%= button_to "Sign Out!", session_url, method: :delete%>
+  <%else%>
+    <a href='<%= subs_url %>'>Go back to the start</a>
+    <br>
+    <a href="<%= new_session_url %>">Sign in!</a>
   <% end %>
 </body>
 </html>

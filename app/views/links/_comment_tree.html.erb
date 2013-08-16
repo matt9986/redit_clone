@@ -1,6 +1,6 @@
 <li>
   <%= comment.body %> -- <%= comment.user.username %>
-  <%if current_user.id == comment.user_id%>
+  <%if logged_in? && current_user.id == comment.user_id%>
   <%= button_to "Delete comment", comment_url(comment), method: :delete %>
   <%end%>
   <ul>

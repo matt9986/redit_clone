@@ -1,4 +1,4 @@
-<h2><a href="<%= @link.url %>"><%= @link.title %></a></h2>
+<h2><a href="http://<%= @link.url %>"><%= @link.title %></a></h2>
 <p>Reported by: <%= @link.author.username %>
 <% if @link.author == current_user %>
 <a href="<%= edit_link_url(@link) %>">Need to make a change?</a>

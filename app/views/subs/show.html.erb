@@ -3,13 +3,15 @@
 <a href="<%= edit_sub_url(@sub) %>">Moderate the Sub</a>
 <% end %>
 
-<% @sub.links.each do |link| %>
+<% @links.each do |link| %>
 <h4><%= link.score %> <a href="<%= link_url(link) %>" ><%= link.title %></a></h4>
 <p><%= link.desc %></p>
 <% end %>
 
 <br>
 <a href='<%= new_sub_link_url(@sub) %>'>Add something!</a>
+
+<%= paginate @links, params: {controller: 'subs'}%>
 
 <% if logged_in? && current_user.id == @sub.mod_id %>
 <a href="<%= edit_sub_url(@sub) %>">Moderate the Sub</a>

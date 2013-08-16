@@ -30,7 +30,7 @@ def rand_links(user_id)#<--TODO figure out if user should be random
   5.times do
   	sub = subs.sample
     title = "#{ADJS.sample.capitalize} #{NOUNS.sample} has #{DESCRIPTORS.sample} #{sub.name.downcase}" #<-- RANDOMIZE (Maybe base on title sub title?)
-    url = "www.lmgtfy.com/?"+title.gsub(" ", "+")+"&l=1"
+    url = "www.lmgtfy.com/?q="+title.gsub(" ", "+")+"&l=1"
     desc = "This site is not liable for where this link may take you"
     sub_id = sub.id
     Link.create(title: title, url: url, desc: desc, user_id: user_id, sub_id: sub_id)
@@ -73,9 +73,9 @@ end
 
 3.times{ make_users }
 generate_subs
-7.times do
+13.times do
 	user_id= User.pluck(:id).sample
 	rand_links(user_id)
 end
-15.times{ generate_comments }
+23.times{ generate_comments }
 generate_votes

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       log_in!(@user)
-      redirect_to sub_url
+      redirect_to subs_url
     else
       flash.now[:message] = "Did you forget a field?"
       render :new

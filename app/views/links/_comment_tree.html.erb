@@ -1,6 +1,8 @@
 <li>
   <%= comment.body %> -- <%= comment.user.username %>
+  <%if current_user.id == comment.user_id%>
   <%= button_to "Delete comment", comment_url(comment), method: :delete %>
+  <%end%>
   <ul>
   <% @comments_by_parent[comment.id].each do |baby_comment| %>
     <%= render "comment_tree",

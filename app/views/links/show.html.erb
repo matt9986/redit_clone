@@ -4,6 +4,10 @@
 <a href="<%= edit_link_url(@link) %>">Need to make a change?</a>
 </p>
 <% end %>
+<p><%= @link.score%>
+	<%=link_to "⇑", link_votes_url(@link, value: 1), method: :post%> /
+	<%=link_to "⇓", link_votes_url(@link, value: -1), method: :post%>
+</p>
 <p><%= @link.desc %></p>
 <h4>Comments</h4>
 <ul>

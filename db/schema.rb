@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816003642) do
+ActiveRecord::Schema.define(:version => 20130816165236) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_comment_id"
@@ -58,5 +58,16 @@ ActiveRecord::Schema.define(:version => 20130816003642) do
 
   add_index "users", ["session_token"], :name => "index_users_on_session_token"
   add_index "users", ["username"], :name => "index_users_on_username"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["link_id"], :name => "index_votes_on_link_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

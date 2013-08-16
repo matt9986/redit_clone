@@ -14,6 +14,7 @@ module LinksHelper
 
   def make_comment(parent_comment_id, link_id)
     html = "<form action='#{comments_url}' method='post'>"
+    html += "<input type='hidden' name='authenticity_token' value= '#{form_authenticity_token}'>"
     html += "<input type='hidden' name='comment[parent_comment_id]' value= '#{parent_comment_id}'>"
     html += "<input type='hidden' name='comment[link_id]' value= '#{link_id}'>"
     html += "<input type='text' name='comment[body]'>"

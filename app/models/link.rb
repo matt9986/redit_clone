@@ -10,6 +10,12 @@ class Link < ActiveRecord::Base
   belongs_to :sub
   has_many :comments
 
+  has_many :votes
+
+  def score
+    self.votes.sum(:value)
+  end
+
   def comments_by_parent
     comment_hash = Hash.new{|hash,key| hash[key] = []}
     comments = self.comments

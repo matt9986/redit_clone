@@ -7,6 +7,17 @@
     name="_method"
     value="put">
   <%= new_link(@link, 0) %>
+  <h4>Sensor comments?</h4>
+  <%@link.comments_by_parent[nil].each do |comment| %>
+  <label for = 'comment_<%=comment.id%>'>
+  	<%= comment.body %>
+  </label>
+  <input type= 'checkbox' 
+  	value='<%=comment.id%>'
+  	id='comment_<%=comment.id%>'
+  	name='comment_ids[]'>
+  <br>
+  <% end %>
   <input type="submit" value="Change!">
 </form>
 

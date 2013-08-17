@@ -42,8 +42,11 @@ class LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    params[:link].each do |_, link|
-      @link.update_attributes(link)
+    if @link.user_id == current_user.id
+      params[:link].each do |_, link|
+        @link.update_attributes(link)
+      end
+      params[:comment_ids].each{ |id| Comment.find(id).destroy}
     end
     redirect_to link_url(@link)
   end

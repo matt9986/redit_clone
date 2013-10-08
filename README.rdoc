@@ -2,6 +2,6 @@
 This Reddit clone is missing a bit of formating, but implements nested comments,
 showing off the comment trees that are such a hallmark of the Reddit community.
 Further, it avoid's N+1 queries in the nested comments by grabbing all of the 
-comments for a post at once, and then determining how the should be nested. This
+comments for a post at once, and then determining how they should be nested. This
 prevents running into scalability issues, especially with particularly popular 
 posts.
